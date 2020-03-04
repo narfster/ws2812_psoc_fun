@@ -27,13 +27,26 @@ void WritetoLED(uint8 row, uint8 value);
 extern const uint32 StripLights_CLUT[ ];
 extern uint32  StripLights_ledArray[StripLights_ROWS][StripLights_COLUMNS];
 
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+void user_btn_isr()
+{
+    USER_BTN_ClearInterrupt();
+}
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
 
 int main()
 {
 	
 	/* Start Neopixel driver */
 	StripLights_Start();
-
+    
+    isr_1_StartEx(user_btn_isr);
 
 	StripLights_Dim(StripLights_DimLevel_4);
 	/* Enable All interrupts */
@@ -46,8 +59,20 @@ int main()
             //StripLights_DisplayClear(getColor(color));
             StripLights_Pixel(i,0,getColor(color));
             StripLights_Trigger(1);
+            CyDelay(100);
+        }
+        
+        for(int i = 0; i < 64; ++i)
+        {
+            //StripLights_DisplayClear(getColor(color));
+            StripLights_Pixel(i,0,0x00FF00);
+            StripLights_Trigger(1);
             CyDelay(50);
         }
+        
+        StripLights_Trigger(1);
+        CyDelay(50);
+        CySysPmDeepSleep();
 
         color += 1;
         

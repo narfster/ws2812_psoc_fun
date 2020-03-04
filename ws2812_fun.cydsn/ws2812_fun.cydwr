@@ -15,7 +15,8 @@
       <Data key="17593bd9-adcf-433b-ba5d-7440cfd3901d/33095dfc-d647-4d48-9404-bcf14e8add06" value="StripLights_Clock" />
     </Group>
     <Group key="Pin">
-      <Data key="52f31aa9-2f0a-497d-9a1f-1424095e13e6" value="P04" />
+      <Data key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba" value="USER_BTN" />
+      <Data key="52f31aa9-2f0a-497d-9a1f-1424095e13e6" value="DIN" />
     </Group>
   </Group>
   <Group key="M0S8Clock">
@@ -515,6 +516,11 @@
     </Group>
   </Group>
   <Group key="Pin2">
+    <Group key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba">
+      <Group key="0">
+        <Data key="Port Format" value="3,1" />
+      </Group>
+    </Group>
     <Group key="52f31aa9-2f0a-497d-9a1f-1424095e13e6">
       <Group key="0">
         <Data key="Port Format" value="0,7" />
