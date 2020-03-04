@@ -10,7 +10,7 @@
  * ========================================
 */
 #include <project.h>
-#include <ADC_SAR.h>
+
 #define GREEN 4
 #define LIGHTGREEN 28
 #define YELLOW 0
