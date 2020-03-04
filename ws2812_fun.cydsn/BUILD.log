@@ -1,4 +1,4 @@
---------------- Build Started: 03/04/2020 22:33:14 Project: ws2812_fun, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 03/04/2020 23:04:07 Project: ws2812_fun, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\ARM_GCC_541\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c main.c -o .\ARM_GCC_541\Debug\main.o
 arm-none-eabi-ar.exe -rs .\ARM_GCC_541\Debug\ws2812_fun.a .\ARM_GCC_541\Debug\DIN.o .\ARM_GCC_541\Debug\DIN_PM.o .\ARM_GCC_541\Debug\StripLights.o .\ARM_GCC_541\Debug\StripLights_fonts.o .\ARM_GCC_541\Debug\StripLights_isr.o .\ARM_GCC_541\Debug\StripLights_StringSel.o .\ARM_GCC_541\Debug\StripLights_StringSel_PM.o .\ARM_GCC_541\Debug\cy_em_eeprom.o .\ARM_GCC_541\Debug\CyFlash.o .\ARM_GCC_541\Debug\CyLib.o .\ARM_GCC_541\Debug\cyPm.o .\ARM_GCC_541\Debug\cyutils.o .\ARM_GCC_541\Debug\CyDMA.o .\ARM_GCC_541\Debug\CyLFClk.o .\ARM_GCC_541\Debug\USER_BTN.o .\ARM_GCC_541\Debug\USER_BTN_PM.o .\ARM_GCC_541\Debug\isr_1.o .\ARM_GCC_541\Debug\CyBootAsmGnu.o
@@ -9,6 +9,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S C:\dev\ws2812_psoc_fun\ws2812_fun.cydsn\ARM_GCC_541\Debug\ws2812_fun.elf
-Flash used: 6208 of 131072 bytes (4.7%).
-SRAM used: 2884 of 16384 bytes (17.6%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 03/04/2020 22:33:15 ---------------
+Flash used: 6432 of 131072 bytes (4.9%).
+SRAM used: 2892 of 16384 bytes (17.7%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 03/04/2020 23:04:08 ---------------

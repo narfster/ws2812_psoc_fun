@@ -40,6 +40,53 @@ void user_btn_isr()
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
+void run_display1()
+{
+    uint32_t color = 0x0;
+    for(int i = 0; i < 64; ++i)
+    {
+        //StripLights_DisplayClear(getColor(color));
+        StripLights_Pixel(i,0,getColor(color));
+        StripLights_Trigger(1);
+        CyDelay(20);
+        
+        color += 1;
+        if(color > StripLights_CWHEEL_SIZE)
+        {
+            color = 0;
+        }
+    }
+
+}
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+void run_display2()
+{
+    
+    uint32_t color = 0x0;
+    for (int i = 0; i < 100; ++i)
+    {
+        StripLights_MemClear(getColor(color));
+        StripLights_Trigger(1);
+        while( StripLights_Ready() == 0);
+        
+        color += 1;
+        if(color > StripLights_CWHEEL_SIZE)
+        {
+            color = 0;
+        }
+        
+        CyDelay(20);
+    }
+}
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
 int main()
 {
 	
@@ -51,37 +98,34 @@ int main()
 	StripLights_Dim(StripLights_DimLevel_4);
 	/* Enable All interrupts */
     CyGlobalIntEnable; 
-    uint32_t color = 0x0;
+    
     for(;;)
     {
-        for(int i = 0; i < 64; ++i)
+        static int i = 0;
+        switch (i)
         {
-            //StripLights_DisplayClear(getColor(color));
-            StripLights_Pixel(i,0,getColor(color));
-            StripLights_Trigger(1);
-            CyDelay(100);
+            case 0:
+                run_display1();
+            break;
+            
+            case 1:
+                run_display2();
+            break;
         }
-        
-        for(int i = 0; i < 64; ++i)
-        {
-            //StripLights_DisplayClear(getColor(color));
-            StripLights_Pixel(i,0,0x00FF00);
-            StripLights_Trigger(1);
-            CyDelay(50);
-        }
-        
-        StripLights_Trigger(1);
-        CyDelay(50);
-        CySysPmDeepSleep();
 
-        color += 1;
+        i++;
+        i = i % 2;
         
-        if(color > StripLights_CWHEEL_SIZE)
-        {
-            color = 0;
-        }
-   
-        /* Place your application code here. */
-		
+
+        // Clear screen
+        StripLights_MemClear(getColor(BLACK));
+        StripLights_Trigger(1);
+        while( StripLights_Ready() == 0);
+
+        StripLights_Stop();
+        CySysPmDeepSleep();
+        StripLights_Start();
+        StripLights_Dim(StripLights_DimLevel_4);
+
 	}
 }
